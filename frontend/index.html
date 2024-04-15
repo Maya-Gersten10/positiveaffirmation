@@ -31,24 +31,180 @@
     <div id="questionsDiv" style="display: none;">
         <h2>Questions</h2>
         <form id="questionsForm">
-            <!-- Questions form content -->
+            <label for="focus">What areas of your life would you like to focus on improving with positive
+                affirmations?</label><br>
+            <select id="focus" name="focus" required>
+                <option value="">Select</option>
+                <option value="Mental Health">Mental Health</option>
+                <option value="Physical and Emotional Well-Being">Physical and Emotional Well-Being</option>
+                <option value="Personal Development and Growth">Personal Development and Growth</option>
+                <option value="Interpersonal Relationships">Interpersonal Relationships</option>
+            </select><br>
+
+            <label for="challenges">Are there any specific challenges or obstacles you're currently facing that you'd
+                like affirmations to help you overcome?</label><br>
+            <select id="challenges" name="challenges" required multiple size="10">
+                <option value="Depression">Depression</option>
+                <option value="Anxiety Disorders">Anxiety Disorders</option>
+                <option value="Post-Traumatic Stress Disorder (PTSD)">Post-Traumatic Stress Disorder (PTSD)</option>
+                <option value="Obsessive-Compulsive Disorder (OCD)">Obsessive-Compulsive Disorder (OCD)</option>
+                <option value="Bipolar Disorder">Bipolar Disorder</option>
+                <option value="Borderline Personality Disorder (BPD)">Borderline Personality Disorder (BPD)</option>
+                <option value="Eating Disorders">Eating Disorders</option>
+                <option value="Attention-Deficit/Hyperactivity Disorder (ADHD)">Attention-Deficit/Hyperactivity Disorder
+                    (ADHD)</option>
+                <option value="Stress-Related Disorders">Stress-Related Disorders</option>
+                <option value="Substance Abuse and Addiction">Substance Abuse and Addiction</option>
+                <option value="Chronic Pain">Chronic Pain</option>
+                <option value="Chronic Illness">Chronic Illness</option>
+                <option value="Recovery from Injury or Surgery">Recovery from Injury or Surgery</option>
+                <option value="Body Image Concerns">Body Image Concerns</option>
+                <option value="Emotional Resilience">Emotional Resilience</option>
+                <option value="Stress Management">Stress Management</option>
+                <option value="Healthy Lifestyle Habits">Healthy Lifestyle Habits</option>
+                <option value="Sleep Disorders">Sleep Disorders</option>
+                <option value="Grief">Grief</option>
+                <option value="Parenting Challenges">Parenting Challenges</option>
+                <option value="Goal Setting and Achievement">Goal Setting and Achievement</option>
+                <option value="Time Management and Productivity">Time Management and Productivity</option>
+                <option value="Motivation and Inspiration">Motivation and Inspiration</option>
+                <option value="Overcoming Procrastination">Overcoming Procrastination</option>
+                <option value="Self-Confidence and Self-Empowerment">Self-Confidence and Self-Empowerment</option>
+                <option value="Embracing Change and Adaptability">Embracing Change and Adaptability</option>
+                <option value="Learning and Skill Development">Learning and Skill Development</option>
+                <option value="Overcoming Limiting Beliefs">Overcoming Limiting Beliefs</option>
+                <option value="Cultivating Gratitude and Positivity">Cultivating Gratitude and Positivity</option>
+                <option value="Lifelong Learning and Personal Fulfillment">Lifelong Learning and Personal Fulfillment
+                </option>
+                <option value="Communication Skills">Communication Skills</option>
+                <option value="Conflict Resolution">Conflict Resolution</option>
+                <option value="Building Trust and Connection">Building Trust and Connection</option>
+                <option value="Setting Boundaries">Setting Boundaries</option>
+                <option value="Maintaining Healthy Relationships">Maintaining Healthy Relationships</option>
+                <option value="Forgiveness and Healing">Forgiveness and Healing</option>
+                <option value="Navigating Family Dynamics">Navigating Family Dynamics</option>
+                <option value="Friendship and Social Connections">Friendship and Social Connections</option>
+                <option value="Managing Difficult Relationships">Managing Difficult Relationships</option>
+                <option value="Parenting and Caregiving">Parenting and Caregiving</option>
+            </select><br>
+
+
+            <button type="submit">Submit</button>
         </form>
     </div>
 
+
+
     <div id="affirmationsDiv" style="display: none;">
         <h2>Filtered Affirmations</h2>
-        <div id="affirmationsList">
-            <!-- Filtered affirmations will be displayed here -->
+        <div id="affirmationsList" style="overflow-y: auto; max-height: 200px;">
         </div>
         <button id="chooseAffirmationBtn">Choose Affirmation</button>
     </div>
+
 
     <div id="selectedAffirmationDiv" style="display: none;">
         <h2>Selected Affirmation</h2>
         <p id="selectedAffirmation"></p>
     </div>
 
-    <script src="app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("DOM content loaded");
+
+            const signupForm = document.getElementById("signupForm");
+            const signinForm = document.getElementById("signinForm");
+            const questionsForm = document.getElementById("questionsForm");
+            const signupDiv = document.getElementById("signupDiv");
+            const signinDiv = document.getElementById("signinDiv");
+            const questionsDiv = document.getElementById("questionsDiv");
+            const affirmationDiv = document.getElementById("affirmationsDiv");
+            const affirmationList = document.getElementById("affirmationsList");
+            const selectedAffirmationDiv = document.getElementById("selectedAffirmationDiv");
+            const selectedAffirmation = document.getElementById("selectedAffirmation");
+            const chooseAffirmationBtn = document.getElementById("chooseAffirmationBtn");
+
+            signupForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+                signupDiv.style.display = "none";
+                questionsDiv.style.display = "block";
+            });
+
+            questionsForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+                const focus = document.getElementById("focus").value;
+                const challenges = Array.from(document.getElementById("challenges").selectedOptions).map(option => option.value);
+                displayAffirmations(focus, challenges);
+            });
+
+            function displayAffirmations(focus, challenges) {
+                function getFilteredAffirmations(focus, challenges) {
+                    let filteredAffirmations = [];
+
+                    switch (focus) {
+                        case "Mental Health":
+                            filteredAffirmations.push("You are capable of overcoming any mental health challenge.");
+                            filteredAffirmations.push("Your mental well-being is important, and you are worthy of support.");
+                            break;
+                        case "Physical and Emotional Well-Being":
+                            filteredAffirmations.push("Your body is strong and resilient, capable of healing and thriving.");
+                            filteredAffirmations.push("Embracing self-care practices nurtures your emotional and physical well-being.");
+                            break;
+                        case "Personal Development and Growth":
+                            filteredAffirmations.push("Every challenge you face is an opportunity for growth and learning.");
+                            filteredAffirmations.push("You are evolving into the best version of yourself with every experience.");
+                            break;
+                        case "Interpersonal Relationships":
+                            filteredAffirmations.push("Your relationships are built on a foundation of love, respect, and communication.");
+                            filteredAffirmations.push("Your connections with others enrich your life and bring joy.");
+                            break;
+                        default:
+                            break;
+                    }
+
+                    challenges.forEach(challenge => {
+                        switch (challenge) {
+                            case "Depression":
+                                filteredAffirmations.push("You have the strength to overcome depression and find joy in life.");
+                                break;
+                            case "Anxiety Disorders":
+                                filteredAffirmations.push("You are calm, centered, and in control of your anxiety.");
+                                break;
+                            case "Chronic Pain":
+                                filteredAffirmations.push("Your body is resilient, and you can manage chronic pain with grace and strength.");
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+
+                    return filteredAffirmations;
+                }
+
+                let filteredAffirmations = getFilteredAffirmations(focus, challenges);
+
+                affirmationList.innerHTML = "";
+                filteredAffirmations.forEach(affirmation => {
+                    const affirmationItem = document.createElement("p");
+                    affirmationItem.textContent = affirmation;
+                    affirmationList.appendChild(affirmationItem);
+                });
+
+                questionsDiv.style.display = "none";
+                affirmationDiv.style.display = "block";
+            }
+
+            chooseAffirmationBtn.addEventListener("click", function () {
+                const affirmations = document.querySelectorAll("#affirmationsList p");
+                const randomIndex = Math.floor(Math.random() * affirmations.length);
+                const selectedAffirmationText = affirmations[randomIndex].textContent;
+                selectedAffirmation.textContent = selectedAffirmationText;
+                affirmationDiv.style.display = "none";
+                selectedAffirmationDiv.style.display = "block";
+            });
+
+        });
+    </script>
 </body>
 
 </html>

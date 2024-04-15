@@ -87,9 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const affirmations = document.querySelectorAll("#affirmationsList p");
         const randomIndex = Math.floor(Math.random() * affirmations.length);
         const selectedAffirmationText = affirmations[randomIndex].textContent;
-        selectedAffirmation.textContent = selectedAffirmationText;
+        selectedAffirmation.textContent = selectedAffirmationText; 
+        selectedAffirmationDiv.style.display = "block"; 
         affirmationDiv.style.display = "none";
-        selectedAffirmationDiv.style.display = "block";
     });
-
-});
+});        

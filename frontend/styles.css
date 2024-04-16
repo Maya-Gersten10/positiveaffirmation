@@ -3,14 +3,13 @@ body {
     margin: 0;
     padding: 0;
     background-color: #004f7f;
-    font-size: 30px;
+    font-size: 16px; 
     color: white;
 }
 
 h1, h2 {
-    font-family: 'Quesha', Arial, sans-serif;
     text-align: center;
-    font-size: 40px;
+    font-size: 28px; 
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -18,19 +17,18 @@ h1, h2 {
 form {
     width: 90%;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 20px auto; 
     background-color: #004f7f;
     padding: 20px;
     border-radius: 5px;
 }
 
 label {
-    display: block;
     margin-bottom: 10px;
 }
 
-input[type="text"], input[type="password"], input[type="number"], input[type="submit"], select {
-    width: calc(100% - 20px);
+input[type="text"], input[type="password"], select {
+    width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -39,35 +37,31 @@ input[type="text"], input[type="password"], input[type="number"], input[type="su
 }
 
 button[type="submit"] {
-    width: calc(100% - 20px);
+    width: 100%;
     background-color: #DFC5FE;
     color: white;
     padding: 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 20px;
-    margin-top: 10px;
+    font-size: 16px; 
 }
 
 button[type="submit"]:hover {
-    background-color: #DFC5FE;
+    background-color: #8E3B8E;
 }
 
 #questionsDiv {
     display: none;
     text-align: center;
-    font-size: 24px;
+    font-size: 20px; 
     margin-top: 20px;
 }
 
 #questionsForm {
-    width: 90%;
+    width: 100%; 
     max-width: 400px;
     margin: 0 auto;
-    background-color: #004f7f;
-    padding: 20px;
-    border-radius: 5px;
 }
 
 #questionsForm label {
@@ -77,26 +71,14 @@ button[type="submit"]:hover {
 
 #questionsForm input[type="text"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
 }
 
 #questionsForm button[type="submit"] {
     width: 100%;
-    background-color: #DFC5FE;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
 }
 
 #questionsForm button[type="submit"]:hover {
-    background-color: #DFC5FE;
+    background-color: #8E3B8E; 
 }
 
 #affirmationsDiv p {
